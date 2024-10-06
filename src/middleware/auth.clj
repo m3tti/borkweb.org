@@ -5,8 +5,7 @@
    [utils.session :as session]))
 
 (def restricted-pages
-  ["/profile"
-   "/wurst"])
+  ["/profile"])
 
 (defn path-restricted? [path]
   (some? (first (filter #(str/includes? path %) restricted-pages))))
