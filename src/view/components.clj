@@ -66,6 +66,8 @@
          [:ul.navbar-nav
           [:li.nav-item
            [:a.nav-link {:href "/blog"} "Blog"]]
+          [:li.nav-item
+           [:a.nav-link {:href "/examples"} "NoBuild CLJS"]]
           ])
        (when user
          [:ul.navbar-nav
@@ -103,7 +105,7 @@
                    :crossorigin "anonymous"}]
          (global-importmap)
          [:style (h/raw sty/*style*)]]
-        [:body {:hx-boost "true" :data-bs-theme "dark"}
+        [:body {:data-bs-theme "dark"}
          (navbar req)
          (alert req)
          body                 

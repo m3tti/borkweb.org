@@ -3,10 +3,8 @@
    [ruuter.core :as ruuter]
    [static :as static]
    [view.index :as index]
-   [view.blog :as blog]
-   [view.login :as login]
-   [view.profile :as profile]
-   [view.register :as register]))
+   [view.examples :as examples]
+   [view.blog :as blog]))
 
 (defn route [path method response-fn]
   {:path path
@@ -39,8 +37,5 @@
      (get "/" index/page)
      (get "/blog" blog/index)
      (get "/blog/:filename" (memoize blog/post))
-     (get "/login" login/index)
-     (post "/login" login/login)
-     (get "/logout" login/logout)
-     (get "/profile" profile/index)]
+     (get "/examples" examples/index)]
     %))
