@@ -1,10 +1,8 @@
 (ns view.index
   (:require
-   [view.components :as c]
+   [view.layout :as l]
    [org.httpkit.client :as hc]
-   [cheshire.core :as json]
-   [database.core :as db]
-   [database.user :as user]))
+   [cheshire.core :as json]))
 
 (defn api-call []
   @(hc/get "https://api.github.com/repos/m3tti/borkweb"))
@@ -16,7 +14,7 @@
 (defn page [req]
   {:status 200
    :body
-   (c/layout
+   (l/layout
     req
     [:div.container
      [:div.row.align-items-center
@@ -38,5 +36,5 @@
       [:h3.text-center "Join the web revolution! Enjoy the web like it was intended!"]]
      [:div.mt-5.mb-5.fs-3
       [:div.text-center
-       [:a.text-reset.text-decoration-none {:href "https://github.com/m3tti/borkweb"} (c/icon "github") " github.com/m3tti/borkweb" ]
+       [:a.text-reset.text-decoration-none {:href "https://github.com/m3tti/borkweb"} (l/icon "github") " github.com/m3tti/borkweb" ]
        [:div [:span.text-warning "★"] (stargazers)]]]])})

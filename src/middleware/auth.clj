@@ -4,6 +4,11 @@
    [clojure.string :as str]
    [utils.session :as session]))
 
+
+;;
+;; Expand the restricted page if you want to hide pages behind the
+;; login.
+;;
 (def restricted-pages
   ["/profile"])
 

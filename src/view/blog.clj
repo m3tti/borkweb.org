@@ -1,10 +1,11 @@
 (ns view.blog
   (:require
    [clojure.java.io :as io]
-   [view.components :as c]))
+   [view.core :as c]
+   [view.layout :as l]))
 
 (defn post [req]
-  (c/layout
+  (l/layout
    req
    [:div.container
     [:pre#md.d-none (slurp (io/resource
@@ -16,7 +17,7 @@
 (defn index [req]
   (let [content (map #(when (not (.isDirectory %))
                         (.getName %)) (file-seq (io/file (io/resource "blog/"))))]
-    (c/layout
+    (l/layout
      req
      [:div.container
       [:h1 "Blog"]

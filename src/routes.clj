@@ -2,9 +2,10 @@
   (:require
    [ruuter.core :as ruuter]
    [static :as static]
+   [view.pwa :as pwa]
    [view.index :as index]
-   [view.examples :as examples]
-   [view.blog :as blog]))
+   [view.blog :as blog]
+   [view.examples :as examples]))
 
 (defn route [path method response-fn]
   {:path path
@@ -31,9 +32,14 @@
 (defn option [path response-fn]
   (route path :option response-fn))
 
+;;
+;; Extend your routes in here!!!
+;;
 (def routes
   #(ruuter/route 
-    [(get "/static/:filename" static/serve-static)
+    [(get "/manifest.json" pwa/manifest)
+     (get "/sw.js" pwa/sw)
+     (get "/static/:filename" static/serve-static)
      (get "/" index/page)
      (get "/blog" blog/index)
      (get "/blog/:filename" (memoize blog/post))

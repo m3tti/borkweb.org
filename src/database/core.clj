@@ -1,28 +1,56 @@
 (ns database.core
   (:require
    [utils.runtime :as runtime]
-   [honey.sql :as sql]))
+   [clojure.string :as str]
+   [clojure.edn :as edn]
+   [honey.sql :as sql])
+  (:import
+   (java.util Locale)))
 
 (runtime/if-bb
+ ;; if you want postgres
+ ;;(require '[pod.babashka.postgresql :as jdbc])
  (require '[pod.babashka.hsqldb :as jdbc])
  (require '[next.jdbc :as jdbc]))
 
-(defonce db (jdbc/get-connection {:dbtype "hsqldb"
-                                  :dbname "borkweborg"
-                                  :user "borkweb"
-                                  :password "test1234"}))
+;; Postgress
+;;(def db-opts
+;;  {:dbtype "postgres"
+;;   :dbname "jobstop"
+;;   :user "postgres"
+;;   :password "test1234"
+;;   :port 15432}
+
+;; Hsql
+(def db-opts
+  {:dbtype "hsqldb"
+   :dbname "./changeme"
+   ;; set postgres dialect
+   :sql.syntax_pgs true})
+
+(defonce db
+  (jdbc/get-connection db-opts))
+
+(defn to-lower-case-keys [arr]
+  (into {}
+        (for [[k v] arr]
+          (hash-map
+           (keyword (str/lower-case (str (namespace k) "/" (name k))))
+           v))))
 
 (defn execute!
   ([sql]
    (execute! db sql))
   ([tx sql]
-   (jdbc/execute! tx (sql/format sql))))
+   (->> (jdbc/execute! tx (sql/format sql))
+       (map to-lower-case-keys))))
 
 (defn execute-one!
   ([sql]
    (execute-one! db sql))
   ([tx sql]
-   (jdbc/execute-one! tx (sql/format sql))))
+   (-> (jdbc/execute-one! tx (sql/format sql))
+       to-lower-case-keys)))
 
 (defn insert!
   ([table key-map]
@@ -60,10 +88,14 @@
                  :from table
                  :where (where-eq key-map)})))
 
+;;
+;; The initialization function for your database system.
+;; You can even directly call the commented function to setup
+;; your system in development.
+;;
 (defn initialize-db []
-  (jdbc/execute-one! db [(slurp "init.sql")]))
+  (jdbc/with-transaction [tx db]
+    (for [q (edn/read-string (slurp "initsql.edn"))]
+      (jdbc/execute-one! tx (sql/format q)))))
 
 (comment (initialize-db))
-
-(defn version []
-  (jdbc/execute-one! db ["select version()"]))

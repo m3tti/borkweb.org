@@ -1,9 +1,10 @@
 (ns view.examples
   (:require
-   [view.components :as c]))
+   [view.core :as c]
+   [view.layout :as l]))
 
 (defn index [req]
-  (c/layout
+  (l/layout
    req
    [:div.container.mb-5
     [:div.row
