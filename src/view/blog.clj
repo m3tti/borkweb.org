@@ -1,6 +1,7 @@
 (ns view.blog
   (:require
    [clojure.java.io :as io]
+   [gaka.core :as gaka]
    [view.core :as c]
    [view.layout :as l]))
 
@@ -12,6 +13,14 @@
                          (str "blog/"
                               (get-in req [:params :filename]))))]
     [:div#content]
+    [:style
+     (gaka/css
+      [:pre
+       :background-color "black"
+       :border-radius "5px"
+       :padding "1rem"]
+      [:code
+       :font-family "ui-monospace,SFMono-Regular,\"SF Mono\",Menlo,Consolas,\"Liberation Mono\",monospace"])]
     (c/cljs-module "markdown")]))
 
 (defn index [req]
