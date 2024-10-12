@@ -1,13 +1,12 @@
 # A Simpler Approach to Modern Web Development: Introducing Borkweb
+In an era where complexity often masquerades as innovation, Borkweb offers a refreshing alternative. This full-stack framework, built on the foundations of Babashka and Clojure, embodies a modern yet traditional approach to web development, stripping away unnecessary complexity and empowering developers to focus on what matters most – writing high-quality code.
 
-In a world where complexity often masquerades as sophistication, Borkweb is a breath of fresh air. This full-stack Babashka/Clojure framework is designed to be simple, minimal, and traditional, allowing developers to work efficiently and effectively without getting bogged down in unnecessary configurations and integrations.
+At the core of Borkweb lies the "No Build" philosophy, which champions simplicity, elegance, and efficiency. By eschewing the overhead of bundlers and build steps, Borkweb enables developers to work in a streamlined environment that fosters productivity and creativity.
 
-At the heart of Borkweb is the "No Build" movement, which prioritizes simplicity, elegance, and getting the job done without unnecessary overhead. This approach is a welcome respite from the complexity that often plagues modern web development.
+One of the key advantages of Borkweb is its use of Clojure as the primary language, complemented by Squint for JavaScript and Gaka for CSS. This unified language approach eliminates the need for context switching, allowing developers to maintain a state of flow and focus on crafting exceptional code.
 
-One of the key benefits of Borkweb is its use of Clojure as the primary language. With Squint providing JavaScript and Gaka handling CSS, developers can work seamlessly in a single language, eliminating the need for context switching and mental overhead. This streamlined approach allows for a state of pure flow, where developers can focus on writing code without distractions.
+Borkweb's traditional approach to web development is not a rejection of modernity, but rather a thoughtful reevaluation of what truly matters in building great web applications. By embracing simplicity and elegance, Borkweb provides a breath of fresh air in a landscape often dominated by complexity.
 
-Borkweb uses the traditional way of doing things in web development, embracing a simplicity and elegance that's often lost in modern tooling and frameworks. By ditching bundlers and build steps, Borkweb allows developers to simply write code and enjoy the outcome.
+The name "Borkweb" is a nod to Michiel Borkent, the visionary behind Babashka and Squint, two integral components of the Borkweb ecosystem. By joining the Borkweb community, developers can be part of a movement that's redefining the way we approach web development – one that values simplicity, elegance, and the joy of coding.
 
-The name "Borkweb" is a homage to Michiel Borkent, the creator of Babashka and Squint, which are both integral parts of the Borkweb ecosystem. By joining the Borkweb community, developers can be part of a movement that's redefining the way we approach web development.
-
-So why not join the web revolution and experience the web as it was intended? With Borkweb, you can enjoy a simpler, more elegant approach to modern web development.
+If you're ready to experience the web as it was meant to be, join the Borkweb revolution and discover a more streamlined, more enjoyable approach to modern web development.
