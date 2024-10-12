@@ -3,6 +3,7 @@
    [cheshire.core :as json]
    [hiccup2.core :as h]
    [utils.session :as s]
+   [utils.htmc :as hc]
    [view.style :as sty]
    [view.core :as c]))
 
@@ -61,13 +62,11 @@
                  :rel "stylesheet"
                  :integrity "sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
                  :crossorigin "anonymous"}]
-         [:script {:src "https://unpkg.com/htmx.org@2.0.2"
-                   :integrity "sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwX1XWe70vji+VSeHOThJ"
-                   :crossorigin "anonymous"}]
          (global-importmap)
          (c/cljs-module "register-sw")
          [:style (h/raw sty/*style*)]]
         [:body {:data-bs-theme "dark"}
+         (hc/htmc)
          (navbar req)
          (alert req)
          body                 

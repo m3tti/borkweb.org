@@ -43,5 +43,7 @@
      (get "/" index/page)
      (get "/blog" blog/index)
      (get "/blog/:filename" (memoize blog/post))
-     (get "/examples" examples/index)]
+     (get "/examples" examples/index)
+     (get "/examples/back" examples/back)
+     (get "/examples/forth" examples/forth)]
     %))
